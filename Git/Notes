@@ -1,0 +1,10 @@
+What is Git ?
+
+Git is a version control system where we can track the changes of the files and allow multiple developers to collaborate with each other.
+
+
+Types:-
+
+1. Local Repository: It is located on local computer system.
+2. Centralized Repository: It is located on central server like GitHub, GitLab, Bitbucket etc.
+3. Distributed Repository: Each developer contains the full copy of repository
