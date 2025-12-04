@@ -1,0 +1,55 @@
+git init → To create the new git repository.
+
+git clone <repo_url> → To copy the existing git repository on local machine.
+
+git status → To check the current repository changes like changes, staged files.
+
+git add <file> → To add the file in staging area.
+
+git add . → To add all the files in staging area.
+
+git commit -m "message" → To commit all staging files with message.
+
+git commit -a -m "message" → To Commit all the track files with message.
+
+git branch → To check the branches.
+
+git branch <branch_name> → To create the new branch.
+
+git checkout <branch_name> → To switch the branch.
+
+git checkout -b <branch_name> → To create the new branch and switch at the same time.
+
+git merge <branch_name> → To merge the branch with current branch.
+
+git remote add <repo_name> <repo_url> -> To connect the remote repository with local repository
+
+git remote -v → To check the list of remote repositories.
+
+git push <repo_name> <branch_name> → To push the changes in repository branch.
+
+git pull <repo_name> <branch_name> → It fetch the changes from remote repository and merge the branch
+
+git fetch <repo_name> <branch_name> → It fetch the changes from remote repository.
+
+git log → To check the commit history.
+
+git log --oneline → To check the commit Short log.
+
+git diff → To check the changes of uncommit file.
+
+git show <commit_id> → To check the details of specific commit.
+
+git checkout -- <file> → To discard the changes in file and back to last commit.
+
+git reset <file> → To unstaged the file.
+
+git revert <commit_id> → To undo the commit.
+
+git reset --hard <commit_id> → It delete the commit history and content of the file.
+
+git tag <tag_name> <commit_id> → To tag the specific commit.
+
+git push <repo_name> <branch_name> --tags -> To push the repository with all tags
+
+git push <repo_name> <branch_name> <tag_name> → To push the repository with specific tag.
