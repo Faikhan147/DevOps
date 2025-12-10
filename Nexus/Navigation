@@ -1,0 +1,3 @@
+1. Launch The EC2 instance with intance type t2.medium and volume 50 GiB by using the instance-setup-script
+2. Login in nexus default usename is admin and to get password run docker exec -it nexus cat /nexus-data/admin.password
+3. After login in nexus create password as Faisal as we used in instance-setup-script settings.xml
