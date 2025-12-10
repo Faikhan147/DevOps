@@ -1,0 +1,34 @@
+#!/bin/bash
+sudo su
+apt update -y
+apt install -y docker.io maven unzip wget
+systemctl start docker
+systemctl enable docker
+
+# Run Nexus container
+docker run -d --name nexus -p 8081:8081 sonatype/nexus3:latest
+
+# Download project zip from Google Drive
+wget --no-check-certificate "https://drive.google.com/uc?export=download&id=1Gx63BuODDFga8JkBRbouHVzW07TS6UHQ" -O /root/JAR-WAR-SNAPSHOTS.zip
+
+# Unzip the project
+unzip -o /root/JAR-WAR-SNAPSHOTS.zip -d /root/
+
+# Create Maven settings.xml for Nexus
+mkdir -p ~/.m2
+cat <<EOF >~/.m2/settings.xml
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0
+          https://maven.apache.org/xsd/settings-1.0.0.xsd">
+
+  <servers>
+    <server>
+      <id>maven-snapshots</id>
+      <username>admin</username>
+      <password>faisal</password>
+    </server>
+  </servers>
+
+</settings>
+EOF
