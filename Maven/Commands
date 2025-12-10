@@ -1,0 +1,13 @@
+mvn archetype:generate -> To create the new project for demo or structure.
+
+mvn compile -> To compile the source code and generate .class files in target folder.
+
+mvn clean -> To deletes the old compiled files and target folder.
+
+mvn test -> To run the test files which helps the source code from bug free.
+
+mvn install -> To install the jar/war file in local maven repository for reusable as a dependency for other projects.
+
+mvn package -> To create the project compile + test + jar/war
+
+mvn clean package-> To  deletes the old compiled files and target folder + create the project compile + test + jar/war
