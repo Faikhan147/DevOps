@@ -1,2 +1,9 @@
-1. Launch The EC2 instance by using the instance-setup-script
-2. Run The Application using http://<EC2-Instance-Public-IP>:8080
+Step 1. Run The Script
+
+Launch The EC2 instance by using the instance-setup-script
+
+
+
+Step 2. Run The Application
+
+Run The Application using http://<EC2-Instance-Public-IP>:8080
