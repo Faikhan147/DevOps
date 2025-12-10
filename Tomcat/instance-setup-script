@@ -1,0 +1,36 @@
+#!/bin/bash
+sudo su
+apt update -y
+apt install -y openjdk-17-jdk maven unzip wget tomcat10
+systemctl start tomcat10
+systemctl enable tomcat10
+
+# Set Java 17 as default version
+update-alternatives --set java /usr/lib/jvm/java-17-openjdk-amd64/bin/java
+
+# Download the zip directly (public Google Drive link)
+wget --no-check-certificate "https://drive.google.com/uc?export=download&id=1KRB-ayyR4nD5X93FyzkN1jtB0bHoyrV4" -O WAR-App.zip
+
+# Unzip the file
+unzip -o WAR-App.zip
+
+# Go inside project folder (change name if needed)
+cd WAR-App
+
+# Build Java project (creates WAR)
+mvn clean package
+
+# Go to target folder
+cd target
+
+# Copy WAR file to Tomcat webapps directory
+cp *.war /var/lib/tomcat10/webapps/
+
+# Remove old ROOT application (if any) to avoid conflicts
+rm -rf /var/lib/tomcat10/webapps/ROOT
+
+# Rename your WAR to ROOT.war for root URL deployment
+mv /var/lib/tomcat10/webapps/WAR-Project-0.0.1-SNAPSHOT.war /var/lib/tomcat10/webapps/ROOT.war
+
+# Restart Tomcat
+systemctl restart tomcat10
