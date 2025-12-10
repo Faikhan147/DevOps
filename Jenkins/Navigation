@@ -6,7 +6,7 @@ Launch The EC2 instance by using the instance-setup-script
 
 Step 2. Run The Jenkins
 
-Run the jenkins EC2 instance to get password run cat /var/lib/jenkins/secrets/initialAdminPassword
+Run the jenkins EC2 instance to get Administrator password run cat /var/lib/jenkins/secrets/initialAdminPassword
 
 
 
