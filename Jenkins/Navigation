@@ -12,4 +12,4 @@ Run the jenkins EC2 instance to get Administrator password run cat /var/lib/jenk
 
 Step 3. Create The Pipeline
 
-Login in jenkins -> New Item -> Enter an item name -> Name -> Select The pipeline -> Ok -> Scroll Down Copy And Paste The pipeline in script -> Save
+Login in jenkins -> New Item -> Enter an item name -> Name -> Select The Pipeline -> OK -> Scroll Down Copy And Paste The pipeline in Pipeline script(Script) -> Save
