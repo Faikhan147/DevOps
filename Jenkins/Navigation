@@ -1,0 +1,15 @@
+Step 1. Run The Script
+
+Launch The EC2 instance by using the instance-setup-script
+
+
+
+Step 2. Run The Jenkins
+
+Run the jenkins EC2 instance to get password run cat /var/lib/jenkins/secrets/initialAdminPassword
+
+
+
+Step 3. Create The Pipeline
+
+Login in jenkins -> New item -> Name -> Select The pipeline -> Ok -> Scroll Down Copy And Paste The pipeline in script -> Save
