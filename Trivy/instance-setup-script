@@ -1,0 +1,12 @@
+#!/bin/bash
+sudo su
+apt update -y
+apt install -y docker.io 
+systemctl start docker
+systemctl enable docker
+
+# Pull Trivy image manually first
+docker pull aquasec/trivy:0.68.1
+
+# Run Trivy scan
+docker run --rm -v /var/run/docker.sock:/var/run/docker.sock aquasec/trivy:0.68.1 image faisalkhan35/my-website:1 --severity LOW,MEDIUM,HIGH,CRITICAL --exit-code 1 > /root/trivy.txt 2>&1
