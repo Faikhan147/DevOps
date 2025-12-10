@@ -1,0 +1,17 @@
+What is Jenkins ?
+
+It is an automation tool which helps to automate the build, test and deploy the application
+
+
+States:-
+
+Continuous Download
+Continuous Build
+Continuous Testing
+Continuous Delivery
+Continuous Deploy
+
+ 
+Component:-
+
+Pipeline: It is a series of code which helps to build, test and deploy the application
