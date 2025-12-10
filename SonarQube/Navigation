@@ -6,7 +6,7 @@ Launch The EC2 instance with intance type t2.medium and volume 50 GiB by using t
 
 Step 2. Generate The Global Token In SonarQube
 
-Login SonarQube by default username and password is admin -> Click on Right-Top -> My Account -> Security -> Generate Tokens -> Enter a name -> Name -> Generate
+Login SonarQube by default username and password is admin -> Click on Right-Top My Account -> Security -> Generate Tokens -> Enter a name -> Name -> Generate
 
 
 
