@@ -1,0 +1,18 @@
+#!/bin/bash
+sudo su
+apt update -y
+apt install -y nginx unzip wget
+systemctl start nginx
+systemctl enable nginx
+
+# Download the zip directly (public Google Drive link)
+wget --no-check-certificate "https://drive.google.com/uc?export=download&id=1H9RaSCEx1pvBupx2qcDvcN1E7YLdcl2B" -O neogym.zip
+
+# Unzip the file
+unzip -o neogym.zip
+
+# Copy files to NGINX web directory
+cp -r neogym-html/* /var/www/html/
+
+# Restart NGINX
+systemctl restart nginx
