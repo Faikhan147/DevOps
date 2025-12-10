@@ -3,7 +3,7 @@ What is Jenkins ?
 It is an automation tool which helps to automate the build, test and deploy the application
 
 
-States:-
+Stages:-
 
 Continuous Download
 Continuous Build
