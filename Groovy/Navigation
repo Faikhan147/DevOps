@@ -1,0 +1,21 @@
+Step 1. Run The Script
+
+Launch The EC2 instance by using the instance-setup-script
+
+
+
+Step 2. Run The Jenkins
+
+Run the jenkins EC2 instance to get Administrator password run docker exec -it jenkins cat /var/jenkins_home/secrets/initialAdminPassword
+
+
+
+Step 3. Run The Groovy Script
+
+Login in Jenkins -> Click On Settings Icon(Manage Jenkins) -> Scroll Down Click On Script Console -> Copy And Paste The groovy-script -> Run
+
+
+
+Step 4. Restart The Jenkins
+
+To restart the jenkins run docker restart jenkins 
