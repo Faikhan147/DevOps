@@ -4,6 +4,6 @@ docker run --rm \
   -e SONAR_HOST_URL="http://<SONARQUBE-PUBLIC-IP>:9000" \
   -e SONAR_TOKEN="<SONAR-GLOBAL-TOKEN>" \
   -v /root/neogym-html:/usr/src \
-  sonarsource/sonar-scanner-cli:4.13.0.2311 \
+  sonarsource/sonar-scanner-cli:latest \
   -Dsonar.projectKey=website \
   -Dsonar.sources=.
