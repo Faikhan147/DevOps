@@ -12,7 +12,7 @@ Permissions policies(Select The AmazonSSMManagedInstanceCore) -> Next -> Role na
 
 
 
-Step 3. Run The Script
+Step 3. Run The Script Without Key-Pair And Limited Rules Security Group
 
 Launch The EC2 instance by using the instance-setup-script
 
