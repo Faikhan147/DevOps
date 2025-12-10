@@ -1,0 +1,29 @@
+Step 1. Go to The JAR-WAR-SNAPSHOTS Directory
+
+cd JAR-WAR-SNAPSHOTS
+
+
+Step 2. Run The Maven Command To Deploy The Jar Snapshot File in Nexus Repository maven-snapshots
+
+mvn -N deploy:deploy-file \
+  -DgroupId=com.jar \
+  -DartifactId=jar-app \
+  -Dversion=0.0.1-SNAPSHOT \
+  -Dpackaging=jar \
+  -Dfile=/root/JAR-WAR-SNAPSHOTS/JAR-Project-0.0.1-SNAPSHOT.jar \
+  -Durl=http://13.126.138.15:8081/repository/maven-snapshots/ \
+  -DrepositoryId=maven-snapshots \
+  -DgeneratePom=true \
+
+
+Step 3. Run The Maven Command To Deploy The War Snapshot File in Nexus Repository maven-snapshots
+
+mvn deploy:deploy-file \
+  -DgroupId=com.war \
+  -DartifactId=war-app \
+  -Dversion=0.0.1-SNAPSHOT \
+  -Dpackaging=jar \
+  -Dfile=/root/JAR-WAR-SNAPSHOTS/WAR-Project-0.0.1-SNAPSHOT.war \
+  -Durl=http://13.126.138.15:8081/repository/maven-snapshots/ \
+  -DrepositoryId=maven-snapshots \
+  -DgeneratePom=true
