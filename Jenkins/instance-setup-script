@@ -10,8 +10,8 @@ echo "deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] https://pkg.jenkin
 # Update and install Jenkins
 apt update -y
 apt install -y jenkins
-systemctl enable jenkins
 systemctl start jenkins
+systemctl enable jenkins
 
 # Install AWS CLI
 cd /tmp
