@@ -1,12 +1,14 @@
 Step 1. Create The Security Group With Limited Rules
 
-Login AWS Console -> Search Bar -> Security groups(EC2 feature) -> Create security group -> Security group name -> Name -> Description -> Inbound rules -> Add rule -> Type(HTTP) -> Source(Anywhere-IPv4) -> Create security group
+Login AWS Console -> Search Bar -> Security groups(EC2 feature) -> Create security group -> Security group name -> Name -> Description -> Inbound rules -> 
+Add rule -> Type(HTTP) -> Source(Anywhere-IPv4) -> Create security group
 
 
 
 Step 2. Create The Role For SSM
 
-Search Bar -> IAM -> Go To Roles Section -> Create role -> Use case -> Service or use case(EC2) -> Next -> Permissions policies(Select The AmazonSSMManagedInstanceCore) -> Next -> Role name -> Name -> Create role
+Search Bar -> IAM -> Go To Roles Section -> Create role -> Use case -> Service or use case(EC2) -> Next -> 
+Permissions policies(Select The AmazonSSMManagedInstanceCore) -> Next -> Role name -> Name -> Create role
 
 
 
