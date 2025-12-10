@@ -12,7 +12,7 @@ Login in nexus default usename is admin and to get password run docker exec -it 
 
 Step 3. Create The New Password
 
-After login in nexus create new password as Faisal as we used in instance-setup-script settings.xml
+After login in nexus create new password as faisal as we used in instance-setup-script settings.xml
 
 
 
