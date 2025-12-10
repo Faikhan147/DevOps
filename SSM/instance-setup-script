@@ -3,8 +3,8 @@ sudo su
 apt-get update -y
 apt-get install -y snapd apache2 unzip wget
 snap install amazon-ssm-agent --classic
-systemctl enable snap.amazon-ssm-agent.amazon-ssm-agent.service
 systemctl start snap.amazon-ssm-agent.amazon-ssm-agent.service
+systemctl enable snap.amazon-ssm-agent.amazon-ssm-agent.service
 systemctl restart snap.amazon-ssm-agent.amazon-ssm-agent.service
 systemctl start apache2
 systemctl enable apache2
