@@ -4,9 +4,9 @@ Launch The EC2 instance by using the instance-setup-script
 
 
 
-Step 2. Run The Jenkins
+Step 2. Run The EC2 Instance
 
-Run the jenkins EC2 instance to get Administrator password run docker exec -it jenkins cat /var/jenkins_home/secrets/initialAdminPassword
+Run the EC2 instance to get Administrator password run docker exec -it jenkins cat /var/jenkins_home/secrets/initialAdminPassword
 
 
 
