@@ -1,0 +1,25 @@
+#!/bin/bash
+sudo su
+apt update -y
+apt install -y openjdk-17-jdk maven unzip wget
+
+# Set Java 17 as default version
+update-alternatives --set java /usr/lib/jvm/java-17-openjdk-amd64/bin/java
+
+# Download the zip directly (public Google Drive link)
+wget --no-check-certificate "https://drive.google.com/uc?export=download&id=1MTJpree9AXb7RjOgnyFTEnjGkPSVzVlI" -O JAR-App.zip
+
+# Unzip the file
+unzip -o JAR-App.zip
+
+# Go inside project folder
+cd JAR-App
+
+# Clean and build using Maven (generates .jar file)
+mvn clean package
+
+# Go inside target folder where JAR gets created
+cd target
+
+# Run the generated JAR file
+java -jar JAR-Project-0.0.1-SNAPSHOT.jar
