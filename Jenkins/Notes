@@ -5,8 +5,7 @@ It is an automation tool which helps to automate the build, test and deploy the 
 
 Stages:-
 
-Continuous Download
-Continuous Build
+Continuous Integration
 Continuous Testing
 Continuous Delivery
 Continuous Deployment
