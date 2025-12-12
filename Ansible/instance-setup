@@ -1,0 +1,31 @@
+Step 1. AWS Credentials
+
+aws configure
+
+
+
+Step 2. Save The Grouping Of OS In File
+
+ansible-inventory -i /root/ec2.aws_ec2.yaml --list | jq 'keys' > /root/ec2_groups.txt
+
+
+
+Step 3. Run The Ansible Playbook
+
+ansible-playbook -i /root/ec2.aws_ec2.yaml /root/playbook.yaml
+
+
+
+Step 4. Check The Status Of The Packages in Ubuntu
+
+systemctl status nginx
+systemctl status tomcat10
+systemctl status mysql
+
+
+
+Step 5. Check The Status Of The Packages in Linux
+
+systemctl status nginx
+systemctl status tomcat10
+systemctl status MySQL
