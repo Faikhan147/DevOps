@@ -1,0 +1,180 @@
+#!/bin/bash
+sudo su
+apt update -y
+apt install -y software-properties-common git python3 python3-pip unzip wget curl
+add-apt-repository --yes --update ppa:ansible/ansible
+
+# Install Ansible
+apt install -y ansible
+apt-mark hold ansible
+
+# Install exact amazon.aws collection
+ansible-galaxy collection install amazon.aws:10.1.2 --force
+
+# Install AWS CLI
+cd /tmp
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+unzip awscliv2.zip
+sudo ./aws/install
+
+# Download Private Key directly (public Google Drive link)
+wget --no-check-certificate "https://drive.google.com/uc?export=download&id=1Gul7D4nhL5iLxpxVlzlGDqC223B6ZUcM" -O /root/.ssh/faisal.pem
+chmod 400 /root/.ssh/faisal.pem
+
+# Create group_vars
+mkdir /root/group_vars
+
+echo -e "ansible_user: ubuntu\nansible_ssh_private_key_file: /root/.ssh/faisal.pem" > /root/group_vars/os_ubuntu.yml
+echo -e "ansible_user: ec2-user\nansible_ssh_private_key_file: /root/.ssh/faisal.pem" > /root/group_vars/os_amazon.yml
+
+# Create the Dynamic Inventory
+cat <<EOF > /root/ec2.aws_ec2.yaml
+plugin: amazon.aws.aws_ec2
+
+regions:
+  - ap-south-1
+
+filters:
+  instance-state-name: running
+
+keyed_groups:
+  - key: tags.Name
+    prefix: os
+
+compose:
+  ansible_host: public_ip_address
+EOF
+
+# Create the Playbook
+
+cat <<EOF > /root/playbook.yaml
+- hosts:
+    - os_ubuntu
+    - os_amazon
+  become: yes
+  vars:
+    ansible_ssh_common_args: "-o StrictHostKeyChecking=no"
+
+  tasks:
+
+    # ---------------- Install NGINX ----------------
+    - name: Install NGINX (Ubuntu)
+      apt:
+        name: nginx
+        state: present
+        update_cache: yes
+      when: ansible_os_family == "Debian"
+
+    - name: Install NGINX (Amazon Linux)
+      yum:
+        name: nginx
+        state: present
+      when: ansible_os_family == "RedHat"
+
+    # ---------------- Install Java ----------------
+    - name: Install Java (Ubuntu)
+      apt:
+        name: openjdk-17-jdk
+        state: present
+        update_cache: yes
+      when: ansible_os_family == "Debian"
+
+    - name: Install Java (Amazon Linux)
+      yum:
+        name: java-17-amazon-corretto-devel
+        state: present
+      when: ansible_os_family == "RedHat"
+
+    # ---------------- Install Tomcat ----------------
+    - name: Install Tomcat (Ubuntu)
+      apt:
+        name: tomcat10
+        state: present
+        update_cache: yes
+      when: ansible_os_family == "Debian"
+
+    - name: Install Tomcat (Amazon Linux)
+      yum:
+        name: tomcat10
+        state: present
+      when: ansible_os_family == "RedHat"
+
+    # ---------------- Install MARIADB ----------------
+    - name: Install MariaDB server (Ubuntu)
+      apt:
+        name: mariadb-server-10.5
+        state: present
+        update_cache: yes
+      when: ansible_os_family == "Debian"
+
+    - name: Install MariaDB server (Amazon Linux)
+      yum:
+        name: mariadb1011-server
+        state: present
+      when: ansible_os_family == "RedHat"
+
+    # ---------------- Start & Enable Services ----------------
+    - name: Start & Enable NGINX
+      service:
+        name: nginx
+        state: started
+        enabled: yes
+
+    - name: Start & Enable Tomcat (Ubuntu)
+      service:
+        name: tomcat10
+        state: started
+        enabled: yes
+      when: ansible_os_family == "Debian"
+
+    - name: Start & Enable Tomcat (Amazon Linux)
+      service:
+        name: tomcat10
+        state: started
+        enabled: yes
+      when: ansible_os_family == "RedHat"
+
+    - name: Start & Enable MariaDB (Ubuntu)
+      service:
+        name: mysql
+        state: started
+        enabled: yes
+      when: ansible_os_family == "Debian"
+
+    - name: Start & Enable MariaDB (Amazon Linux)
+      service:
+        name: mariadb
+        state: started
+        enabled: yes
+      when: ansible_os_family == "RedHat"
+
+    # ---------------- Restart Services ----------------
+    - name: Restart NGINX
+      service:
+        name: nginx
+        state: restarted
+
+    - name: Restart Tomcat (Ubuntu)
+      service:
+        name: tomcat10
+        state: restarted
+      when: ansible_os_family == "Debian"
+
+    - name: Restart Tomcat (Amazon Linux)
+      service:
+        name: tomcat10
+        state: restarted
+      when: ansible_os_family == "RedHat"
+
+    - name: Restart MariaDB (Ubuntu)
+      service:
+        name: mysql
+        state: restarted
+      when: ansible_os_family == "Debian"
+
+    - name: Restart MariaDB (Amazon Linux)
+      service:
+        name: mariadb
+        state: restarted
+      when: ansible_os_family == "RedHat"
+EOF
