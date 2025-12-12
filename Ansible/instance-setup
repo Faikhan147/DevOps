@@ -4,7 +4,7 @@ aws configure
 
 
 
-Step 2. Save the grouping of OS in a file
+Step 2. Save The Grouping of OS In a File
 
 ansible-inventory -i /root/ec2.aws_ec2.yaml --list | jq 'keys' > /root/ec2_groups.txt
 
