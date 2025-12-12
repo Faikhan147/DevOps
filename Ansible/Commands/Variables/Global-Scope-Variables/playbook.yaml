@@ -1,0 +1,30 @@
+Step 1. Group The OS in Inventory in a File
+
+nano /root/inventory/webserver
+IP addresse-1 of OS 
+IP addresse-2 of OS
+.
+.
+.
+
+
+
+Step 2. Create group_vars Directory
+
+mkdir /root/group_vars
+
+echo -e "a= tomcat10\nb= present\nc= yes" > /root/group_vars/webserver.yaml
+
+
+
+Step 3. Create The Playbook.yaml
+
+- name: Installation of Tomcat10                                                                         
+  hosts: webserver
+  become: true
+  tasks:
+    - name: Installing Tomcat10
+      apt:
+        name: "{{a}}"
+        state: "{{b}}"
+        update_cache: "{{c}}"
