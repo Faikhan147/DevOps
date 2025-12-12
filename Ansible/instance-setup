@@ -4,7 +4,7 @@ aws configure
 
 
 
-Step 2. Save The Grouping Of OS In File
+Step 2. Save The Grouping Of Servers In a File
 
 ansible-inventory -i /root/ec2.aws_ec2.yaml --list | jq 'keys' > /root/ec2_groups.txt
 
@@ -16,7 +16,7 @@ ansible-playbook -i /root/ec2.aws_ec2.yaml /root/playbook.yaml
 
 
 
-Step 4. Check The Status Of The Packages in Ubuntu
+Step 4. Check The Status Of The Packages in Ubuntu Server
 
 systemctl status nginx
 systemctl status tomcat10
@@ -24,7 +24,7 @@ systemctl status mysql
 
 
 
-Step 5. Check The Status Of The Packages in Linux
+Step 5. Check The Status Of The Packages in Linux Server
 
 systemctl status nginx
 systemctl status tomcat10
