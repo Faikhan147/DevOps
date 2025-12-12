@@ -13,7 +13,7 @@ Step 2. Create group_vars Directory
 
 mkdir /root/group_vars
 
-echo -e "a= tomcat10\nb= present\nc= yes" > /root/group_vars/webserver.yaml
+echo -e "a: tomcat10\nb: present\nc: yes" > /root/group_vars/webserver.yaml
 
 
 
