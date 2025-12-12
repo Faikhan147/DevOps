@@ -1,0 +1,9 @@
+- name: Installation of Tomcat10
+  hosts: webserver
+  become: true
+  tasks:
+    - name: Installing Tomcat10
+      apt:
+        name: tomcat10
+        state: present
+        update_cache: yes
