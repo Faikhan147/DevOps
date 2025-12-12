@@ -30,6 +30,7 @@ Step 3. Create The Playbook.yaml
         update_cache: "{{c}}"
 
 
+
 Step 4. Run The Playbook
 
 ansible-playbook -i /root/inventory/webserver playbook.yaml
