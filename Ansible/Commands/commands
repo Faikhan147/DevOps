@@ -1,5 +1,5 @@
 ansible debian -m apt -a "name=tomcat10 state=present update_cache=yes" -> To install the package on Debian/Ubuntu-based systems
 
-ansible linux -m yum -a "name=tomcat10 state=present update_cache=yes" -> To install the package on RHEL/CentOS/Amazon Linux-based systems
+ansible linux -m yum -a "name=tomcat10 state=present -> To install the package on RHEL/CentOS/Amazon Linux-based systems
 
 ansible playbook playbook.yaml -> To run the playbook
