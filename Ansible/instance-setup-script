@@ -19,7 +19,7 @@ sudo ./aws/install
 wget --no-check-certificate "https://drive.google.com/uc?export=download&id=1Gul7D4nhL5iLxpxVlzlGDqC223B6ZUcM" -O /root/.ssh/faisal.pem
 chmod 400 /root/.ssh/faisal.pem
 
-# Create group_vars
+# Create group_vars Directory
 mkdir /root/group_vars
 
 echo -e "ansible_user: ubuntu\nansible_ssh_private_key_file: /root/.ssh/faisal.pem" > /root/group_vars/os_ubuntu.yml
