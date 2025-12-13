@@ -16,7 +16,7 @@ ansible-playbook -i /root/ec2.aws_ec2.yaml /root/playbook.yaml
 
 
 
-Step 4. Check The Status of The Packages On Ubuntu OS
+Step 4. Check The Status of The Modules On Ubuntu OS
 
 systemctl status nginx
 systemctl status tomcat10
@@ -24,7 +24,7 @@ systemctl status mysql
 
 
 
-Step 5. Check The Status Of The Packages on Amazon Linux OS
+Step 5. Check The Status Of The Modules on Amazon Linux OS
 
 systemctl status nginx
 systemctl status tomcat10
