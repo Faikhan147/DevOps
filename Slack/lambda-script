@@ -1,0 +1,32 @@
+import json
+import urllib3
+
+http = urllib3.PoolManager()
+
+# Slack Webhook URL
+SLACK_WEBHOOK_URL = "https://hooks.slack.com/services/XXXX/YYYY/ZZZZ"  # Change Accordingly
+
+def lambda_handler(event, context):
+    # EventBridge se aane wala message read karega
+    message = event.get("message", "EC2 Event Received")
+
+    slack_data = {
+        "text": message
+    }
+
+    encoded_data = json.dumps(slack_data).encode("utf-8")
+
+    response = http.request(
+        "POST",
+        SLACK_WEBHOOK_URL,
+        body=encoded_data,
+        headers={"Content-Type": "application/json"}
+    )
+
+    print("Status:", response.status)
+    print("Response:", response.data)
+
+    return {
+        "statusCode": 200,
+        "body": "Message sent to Slack successfully"
+    }
