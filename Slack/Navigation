@@ -25,8 +25,8 @@ Go To Configuration Section -> General configuration -> Edit -> Timeout(1 min 3 
 
 Step 5. Create The Amazon EventBridge Rule For EC2 Launch
 
-Login AWS Console -> Search Bar -> Amazon EventBridge -> Rules -> Create rule -> Events -> Click On AWS SERVICE EVENTS -> Select The EC2 Instance State-change Notification -> Drag It To Triggering Events -> 
-Scroll Down -> Event pattern (filter) Copy And Paste This Below
+Login AWS Console -> Search Bar -> Amazon EventBridge -> Rules -> Create rule -> Events -> Click On AWS SERVICE EVENTS -> Select The EC2 Instance State-change Notification -> 
+Drag It To Triggering Events -> Scroll Down -> Event pattern (filter) Copy And Paste This Below
 
 
 {
