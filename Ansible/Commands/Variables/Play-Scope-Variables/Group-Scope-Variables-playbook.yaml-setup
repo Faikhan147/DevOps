@@ -1,7 +1,9 @@
 Step 1. Group The OS in Inventory in a File
 
-nano /root/inventory/webserver
-Public-IP of OS-1 
+nano /root/inventory
+
+[webserver]
+Public-IP of OS-1
 Public-IP of OS-2
 .
 .
@@ -9,19 +11,27 @@ Public-IP of OS-2
 
 
 
-Step 2. Create group_vars Directory
+Step 2. Download Private Key directly (public Google Drive link)
+wget --no-check-certificate "https://drive.google.com/uc?export=download&id=1Gul7D4nhL5iLxpxVlzlGDqC223B6ZUcM" -O /root/.ssh/faisal.pem
+chmod 400 /root/.ssh/faisal.pem
+
+
+
+Step 3. Create group_vars Directory
 
 mkdir /root/group_vars
 
-echo -e "a: tomcat10\nb: present\nc: yes" > /root/group_vars/webserver.yaml
+echo -e "a: tomcat10\nb: present\nc: yes\nansible_user: ubuntu\nansible_ssh_private_key_file: /root/.ssh/faisal.pem" > /root/group_vars/webserver.yaml
 
 
 
-Step 3. Create The Playbook.yaml
+Step 4. Create The Playbook.yaml
 
 - name: Installation of Tomcat10                                                                         
   hosts: webserver
   become: true
+  vars:
+    ansible_ssh_common_args: "-o StrictHostKeyChecking=no"
   tasks:
     - name: Installing Tomcat10
       apt:
@@ -29,9 +39,7 @@ Step 3. Create The Playbook.yaml
         state: "{{b}}"
         update_cache: "{{c}}"
 
-
-
 Step 4. Run The Playbook
 
-ansible-playbook -i /root/inventory/webserver playbook.yaml
+ansible-playbook -i /root/inventory/ playbook.yaml
 
