@@ -1,0 +1,16 @@
+- name: Install Tomcat10
+  hosts: webserver
+  become: true
+  tasks:
+    - name: Install Tomcat10
+      apt:
+        name: tomcat10
+        state: present
+        update_cache: yes
+      notify: restart tomcat10
+
+  handlers:
+    - name: restart tomcat10
+      service:
+        name: tomcat10
+        state: restarted
