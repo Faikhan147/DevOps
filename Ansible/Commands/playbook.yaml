@@ -1,8 +1,14 @@
-- name: Installation of Tomcat10
+- name: Install only NGINX and Tomcat10
   hosts: webserver
   become: true
   tasks:
-    - name: Installing Tomcat10
+    - name: Install NGINX
+      apt:
+        name: nginx
+        state: present
+        update_cache: yes
+
+    - name: Install Tomcat10
       apt:
         name: tomcat10
         state: present
