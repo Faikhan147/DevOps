@@ -59,8 +59,8 @@ Click On Targets -> Scroll Down And Select The Function -> Create -> Rule name -
 
 Step 6. Create The Amazon EventBridge Rule For EC2 Terminate
 
-Search Bar -> Amazon EventBridge -> Rules -> Create rule -> Events -> Click On AWS SERVICE EVENTS -> Select The EC2 Instance State-change Notification -> Drag It To Triggering Events ->
-Scroll Down -> Event pattern (filter) Copy And Paste This Below
+Search Bar -> Amazon EventBridge -> Rules -> Create rule -> Events -> Click On AWS SERVICE EVENTS -> Select The EC2 Instance State-change Notification -> 
+Drag It To Triggering Events -> Scroll Down -> Event pattern (filter) Copy And Paste This Below
 
 
 {
