@@ -30,11 +30,11 @@ Drag It To Triggering Events -> Scroll Down -> Event pattern (filter) Copy And P
 
 
 {
-  "source": ["aws.ec2"],
-  "detail-type": ["EC2 Instance State-change Notification"],
-  "detail": {
-    "state": ["running"]
-  }
+  "source": ["aws.ec2"],
+  "detail-type": ["EC2 Instance State-change Notification"],
+  "detail": {
+    "state": ["running"]
+  }
 }
 
 
