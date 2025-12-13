@@ -28,4 +28,4 @@ Step 5. Check The Status Of The Packages on Amazon Linux OS
 
 systemctl status nginx
 systemctl status tomcat10
-systemctl status MySQL
+systemctl status mysql
