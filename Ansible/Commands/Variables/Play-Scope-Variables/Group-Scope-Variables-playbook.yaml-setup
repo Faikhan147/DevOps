@@ -25,7 +25,7 @@ echo -e "a: tomcat10\nb: present\nc: yes\nansible_user: ubuntu\nansible_ssh_priv
 
 
 
-Step 4. Create The Playbook.yaml
+Step 4. Create The playbook
 
 - name: Installation of Tomcat10                                                                         
   hosts: webserver
