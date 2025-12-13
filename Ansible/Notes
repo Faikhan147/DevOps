@@ -1,0 +1,11 @@
+What is Ansible ?
+
+It is an automation tool which helps to automate and manage the multiple operating systems
+
+
+Components:-
+
+Variables:- It is used to install the modules statically
+Playbook: It is used to install multiple modules
+Handler: It is used to execute the module when other module is executed
+Error Handler: It is used to execute the multiple versions of the module which helps to reduce the errors
