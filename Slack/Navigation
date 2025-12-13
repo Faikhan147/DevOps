@@ -81,11 +81,9 @@ Click On Input transformation -> Scroll Down And Enable -> Input transformer -> 
 
 Template Copy And Paste This Below
 
-
 {
-  "message": "Website Instance is Terminated"
+  "message": "Website Instance is Terminated"
 }
-
 
 Click On Targets -> Scroll Down And Select The Function -> Create -> Rule name -> Name -> Create
 
