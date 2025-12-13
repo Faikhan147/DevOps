@@ -22,8 +22,8 @@ chmod 400 /root/.ssh/faisal.pem
 # Create group_vars Directory
 mkdir /root/group_vars
 
-echo -e "ansible_user: ubuntu\nansible_ssh_private_key_file: /root/.ssh/faisal.pem" > /root/group_vars/os_ubuntu.yml
-echo -e "ansible_user: ec2-user\nansible_ssh_private_key_file: /root/.ssh/faisal.pem" > /root/group_vars/os_amazon.yml
+echo -e "ansible_user: ubuntu\nansible_ssh_private_key_file: /root/.ssh/faisal.pem" > /root/group_vars/os_ubuntu.yaml
+echo -e "ansible_user: ec2-user\nansible_ssh_private_key_file: /root/.ssh/faisal.pem" > /root/group_vars/os_amazon.yaml
 
 # Create the Dynamic Inventory
 cat <<EOF > /root/ec2.aws_ec2.yaml
