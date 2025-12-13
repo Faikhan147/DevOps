@@ -1,0 +1,107 @@
+Step 1. Generate The Webhook URL
+
+Open the link in browser https://api.slack.com/apps -> Your Apps(Select The App) -> Incoming Webhooks -> Add New Webhook -> Channel for webhook(Select The Channel) -> Allow
+
+
+
+Step 2. Open The Slack Link In Browser
+
+Open the link in browser https://app.slack.com/client/T08QCC00SVD/C08QCC0535M -> Channels -> Click On channel devops
+
+
+
+Step 3. Create The Lambda Function
+
+Login AWS Console -> Search Bar -> Lambda -> Create a function -> Function name -> Runtime(Python 3.14) -> Change default execution role -> Use an existing role(Amazon-EC2-Full-Access) -> Create function
+
+
+
+Step 4. Configuration Setting in Lambda Function
+
+Go To Configuration Section -> General configuration -> Edit -> Timeout(1 min 3 sec) -> Save
+
+
+
+Step 5. Create The Amazon EventBridge Rule For EC2 Launch
+
+Login AWS Console -> Search Bar -> Amazon EventBridge -> Rules -> Create rule -> Events -> Click On AWS SERVICE EVENTS -> Select The EC2 Instance State-change Notification -> Drag It To Triggering Events -> 
+Scroll Down -> Event pattern (filter) Copy And Paste This Below
+
+
+{
+  "source": ["aws.ec2"],
+  "detail-type": ["EC2 Instance State-change Notification"],
+  "detail": {
+    "state": ["running"]
+  }
+}
+
+
+Click On Targets ->  Select The Lambda function -> Drag It To Targets
+
+Click On Input transformation -> Scroll Down And Enable -> Input transformer -> Input path Copy And Paste This Below
+
+{}
+
+
+Template Copy And Paste This Below
+
+
+{
+  "message": "Website Instance is Launched"
+}
+
+
+Click On Targets -> Scroll Down And Select The Function -> Create -> Rule name -> Name -> Create
+
+
+
+Step 6. Create The Amazon EventBridge Rule For EC2 Terminate
+
+Search Bar -> Amazon EventBridge -> Rules -> Create rule -> Events -> Click On AWS SERVICE EVENTS -> Select The EC2 Instance State-change Notification -> Drag It To Triggering Events ->
+Scroll Down -> Event pattern (filter) Copy And Paste This Below
+
+
+{
+  "source": ["aws.ec2"],
+  "detail-type": ["EC2 Instance State-change Notification"],
+  "detail": {
+    "state": ["terminated"]
+  }
+}
+
+
+Click On Targets ->  Select The Lambda function -> Drag It To Targets
+
+Click On Input transformation -> Scroll Down And Enable -> Input transformer -> Input path Copy And Paste This Below
+
+{}
+
+
+Template Copy And Paste This Below
+
+
+{
+  "message": "Website Instance is Terminated"
+}
+
+
+Click On Targets -> Scroll Down And Select The Function -> Create -> Rule name -> Name -> Create
+
+
+
+Step 7. Copy and Paste The Lambda Function Script
+
+Go To Code Section -> Copy and Paste The lambda-script -> Click On Deploy (Ctrl+Shift+U)
+
+
+
+Step 8. Execute The Code
+
+Go To Test Section -> Test
+
+
+
+Step 9. Run The Script
+
+Launch The EC2 instance by using the instance-setup-script
