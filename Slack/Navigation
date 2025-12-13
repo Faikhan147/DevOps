@@ -12,7 +12,7 @@ Open the link in browser https://app.slack.com/client/T08QCC00SVD/C08QCC0535M ->
 
 Step 3. Create The Lambda Function
 
-Login AWS Console -> Search Bar -> Lambda -> Create a function -> Function name -> Runtime(Python 3.14) -> Change default execution role -> 
+Login AWS Console -> Search Bar -> Lambda -> Create a function -> Function name -> Name -> Runtime(Python 3.14) -> Change default execution role -> 
 Use an existing role(Amazon-EC2-Full-Access) -> Create function
 
 
