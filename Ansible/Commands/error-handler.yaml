@@ -1,0 +1,17 @@
+- name: Install Tomcat with fallback
+  hosts: webserver
+  become: true
+  tasks:
+    - block:
+        - name: Try installing Tomcat7
+          apt:
+            name: tomcat7
+            state: present
+            update_cache: yes
+
+      rescue:
+        - name: Tomcat7 failed, install Tomcat10 instead
+          apt:
+            name: tomcat10
+            state: present
+            update_cache: yes
