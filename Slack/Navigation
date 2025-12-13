@@ -91,7 +91,7 @@ Click On Targets -> Scroll Down And Select The Function -> Create -> Rule name -
 
 Step 7. Copy and Paste The Lambda Function Script
 
-Go To Code Section -> Copy and Paste The lambda-script -> Click On Deploy (Ctrl+Shift+U)
+Search Bar -> Lambda -> Select The Lambda function -> Go To Code Section -> Copy and Paste The lambda-script -> Click On Deploy (Ctrl+Shift+U)
 
 
 
