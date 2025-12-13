@@ -1,8 +1,8 @@
 Step 1. Group The OS in Inventory in a File
 
 nano /root/inventory/webserver
-IP addresse-1 of OS 
-IP addresse-2 of OS
+Public-IP of OS-1 
+Public-IP of OS-2
 .
 .
 .
