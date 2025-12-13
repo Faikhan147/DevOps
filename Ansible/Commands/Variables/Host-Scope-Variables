@@ -26,7 +26,7 @@ echo -e "a: tomcat10\nb: present\nc: yes\n\nansible_user: ubuntu\nansible_ssh_pr
 Step 4. Create The playbook
 
 - name: Installation of Tomcat10                                                                         
-  hosts: webserver
+  hosts: Public-IP of particular OS
   become: true
   tasks:
     - name: Installing Tomcat10
