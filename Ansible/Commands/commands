@@ -2,4 +2,6 @@ ansible debian -m apt -a "name=tomcat10 state=present update_cache=yes" -> To in
 
 ansible linux -m yum -a "name=tomcat10 state=present -> To install the package on RHEL/CentOS/Amazon Linux-based systems
 
+ansible-playbook playbook.yaml -i /root/inventory --extra-vars "a=tomcat10 b=present c=yes" -b -> To Overright the playbook package
+
 ansible playbook playbook.yaml -> To run the playbook
