@@ -1,6 +1,6 @@
 ansible webserver -i /root/inventory -m apt -a "name=tomcat10 state=present update_cache=yes" -b -> To install the package on Debian/Ubuntu-based systems
 
-ansible webserver -i /root/inventory -m yum -a "name=tomcat10 state=present -> To install the package on RHEL/CentOS/Amazon Linux-based systems
+ansible webserver -i /root/inventory -m yum -a "name=tomcat10 state=present update_cache=yes" -b -> To install the package on RHEL/CentOS/Amazon Linux-based systems
 
 ansible-playbook playbook.yaml -i /root/inventory --extra-vars "a=tomcat10 b=present c=yes" -b -> To Overright the playbook package
 
