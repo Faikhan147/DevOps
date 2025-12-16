@@ -1,0 +1,14 @@
+What is Docker ?
+
+It is a containerization tool which helps to manage and run containerized applications
+
+
+Components:-
+
+Docker file: It is used to create the application source code into image
+
+Docker compose: It is used to manage and run multiple containers
+
+Docker Volume: It is used to retain the data
+
+Docker Swarm: It is a orchestration tool which helps to manage rollback and update the service
