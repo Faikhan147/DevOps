@@ -27,12 +27,12 @@ LoadBalancer
 
 External Name service: It helps to map the custom name to third party application such as AWS RDS-Endpoint
 Ingress: It helps to provide the internal HTTP/HTTPS routing to the application
-Headless Service: It helps to provide the DNS resolution to database pods
+Headless Service: It helps to provide the DNS resolution to pods
 StatefulSet: It used for databases and persists the data
 DaemonSet: It ensures that one pod is running on each node
 Cluster-Autoscaler: It helps to automatically scale the nodes based on cluster capacity
 Horizontal-Pod-Autoscaler : It helps to automatically scale the pods based on pod metrics
-Vertical-Pod-Autoscaler:  It helps to automatically adjust the CPU & Memory limits of the database pods
+Vertical-Pod-Autoscaler:  It helps to automatically adjust the CPU & Memory limits of the pods
 RBAC:  It helps to provide the rule and permissions via roles, role-bindings and service-accounts
 Secrets: It helps to store the sensitive data like credentials, passwords, username etc
 ConfigMaps: It helps to store the Non-sensitive data like Database name, Hostname and port etc
