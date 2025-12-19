@@ -1,0 +1,13 @@
+kubectl run pod-name --image=nginx:latest --restart=Never -> To create the pod
+
+kubectl expose pod pod-name --port=80 --target-port=80 --type=LoadBalancer -> To expose the pod
+
+kubectl create deployment deployment-name --image=nginx:latest -> To create the deployment
+
+kubectl expose deployment deployment-name --port=80 --target-port=80 --type=LoadBalancer -> To expose the deployment
+
+kubectl set image deployment/deployment-name container-name=image-name -> To update the deployment
+
+kubectl rollout undo deployment/deployment-name -> To rollback the deployment
+
+kubectl scale deployment deployment-name --replicas=10 -> To scale the deployment
