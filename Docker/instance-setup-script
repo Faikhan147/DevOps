@@ -11,13 +11,11 @@ apt install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
 systemctl start docker
 systemctl enable docker
 
-
 # Create .env file
 cat <<EOF > /root/.env
 MYSQL_ROOT_PASSWORD=faisalkhan34@
-MYSQL_USER=farzan
-MYSQL_USER_PASSWORD=farzankhan34@
-MYSQL_NAME=faisal_farzan
+MYSQL_DATABASE=faisal
+MYSQL_PORT=3306
 EOF
 
 #Create Docker Compose
