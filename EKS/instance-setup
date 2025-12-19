@@ -4,7 +4,7 @@ aws configure
 
 
 
-Step 2. Update The Kubeconfig For EKS And Nodes
+Step 2. Update The Kubeconfig For EKS And For EKS Nodes
 
 aws eks update-kubeconfig --name eks-cluster --region ap-south-1
 kubectl get nodes
