@@ -13,4 +13,6 @@ docker container ps
 Step 3. Check The MYSQL Databse
 
 docker exec -it mysql mysql -u root -p
+Enter password:faisalkhan34@
+SHOW DATABASES;
 
