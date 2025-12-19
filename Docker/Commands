@@ -98,4 +98,4 @@ docker commit c1 image-name -> To convert container into image
 
 docker-compose up -d -> To run the default docker compose file 
 
-docker-compose -f compose.yaml up -d -> To run the custom docker compose file 
+docker compose -f compose.yaml up -d -> To run the custom docker compose file 
