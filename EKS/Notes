@@ -20,12 +20,12 @@ Service: It helps to expose the pods to outside world
 
 
 Types:-
-Cluster-IP
+ClusterIP
 NodePort
 LoadBalancer
 
 
-External Name service: It helps to map the custom name to third party application such as AWS RDS-Endpoint
+ExternalName Service: It helps to map the custom name to third party application such as AWS RDS-Endpoint
 Ingress: It helps to provide the internal HTTP/HTTPS routing to the application
 Headless Service: It helps to provide the DNS resolution to pods
 StatefulSet: It used for databases and persists the data
