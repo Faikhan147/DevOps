@@ -1,0 +1,25 @@
+Step 1. Create The EKS Cluster
+
+Login AWS Console -> Search Bar -> EKS -> Click On Elastic Kubernetes Service -> Create cluster -> Custom configuration -> Disabled The Use EKS Auto Mode -> Cluster configuration(Name) -> Name -> 
+Cluster IAM role -> Create recommended role -> Next -> Next -> Role name -> Name -> Create role -> Select The Cluster IAM role -> Next -> Select The Additional security groups ->  Next -> 
+Select The All Control plane logs -> Next -> Next -> Next -> Create
+
+
+
+Step 2. Create The Node Group 
+
+Select The Cluster -> Go To  Compute -> Scroll Down Click On Add node group -> Name -> Node IAM role -> Create recommended role -> Next -> Next -> Role name -> Name -> Create role -> 
+Select The Node IAM role -> Next -> Select The Enable node auto repair -> Click On Repair limits configuration - optional -> Count-based thresholds -> Max parallel node repair count(5) -> Next -> 
+Enable The Configure remote access to nodes -> Warning(Click On Enable) -> Select The EC2 Key Pair -> Select The Additional security groups -> Next -> Create
+
+
+
+Step 3. Run The Script
+
+Launch The EC2 instance by using the instance-setup-script
+
+
+
+Step 4. Instance Setup
+
+Instance Setup Using instance-setup
