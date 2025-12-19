@@ -12,8 +12,5 @@ docker container ps
 
 Step 3. Check The MYSQL Databse
 
-Check As Root
 docker exec -it mysql mysql -u root -p
 
-Check As User
-docker exec -it mysql mysql -u farzan -p
