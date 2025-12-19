@@ -7,7 +7,7 @@ Components:-
 
 API Server
 Scheduler
-Control Manager
+Controller Manager
 Kubelet
 Kube-proxy
 ETCD
