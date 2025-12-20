@@ -5,6 +5,7 @@ docker restart Prometheus
 docker container ps
 
 
+
 Step 2. Add the Prometheus Data Source in Grafana 
 
 Login Grafana Console -> Default username and password is admin -> Set new password -> Connections -> Data sources -> Add data source -> Select The Prometheus -> 
