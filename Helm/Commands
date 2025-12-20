@@ -1,0 +1,5 @@
+helm install Release-Name . -> To apply the helm chart
+
+helm upgrade Release-Name . -> To upgrade the helm chart
+
+helm rollback Release-Name version-number -> To rollback the helm chart
