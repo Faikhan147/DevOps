@@ -1,0 +1,82 @@
+#!/bin/bash
+sudo su
+apt update -y
+apt install -y unzip
+cd /tmp
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+unzip awscliv2.zip
+sudo ./aws/install
+
+# Install kubectl
+curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+chmod +x kubectl
+sudo mv kubectl /usr/local/bin/
+kubectl version --client
+
+# Install Helm
+curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
+
+#Create The Directory
+mkdir /root/helm/templates
+
+# Create the Values YAML
+cat <<EOF > /root/helm/values.yaml
+replicaCount: 3
+
+image:
+  repository: nginx
+  tag: latest
+  pullPolicy: IfNotPresent
+
+service:
+  type: LoadBalancer
+  port: 80
+  targetPort: 80
+EOF
+
+# Create the Chart YAML
+cat <<EOF > /root/helm/Chart.yaml
+apiVersion: v2
+name: website
+description: A Helm chart for deploying website with blue-green strategy
+type: application
+version: 0.1.0
+appVersion: "1.0"
+EOF
+
+# Create the Deployment YAML
+cat <<EOF > /root/helm/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-nginx
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+        - name: nginx
+          image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+EOF
+
+# Create the Service YAML
+cat <<EOF > /root/helm/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Release.Name }}-nginx
+spec:
+  selector:
+    app: nginx
+  ports:
+    - protocol: TCP
+      port: {{ .Values.service.port }}
+      targetPort: {{ .Values.service.targetPort }}
+  type: {{ .Values.service.type }}
+EOF
