@@ -5,4 +5,4 @@ It is a package manager for Kubernetes where we can manage, upgrade, rollback an
 
 Components:-
 
-Helm Chart: It helps to deploy the complex applications easily and containing all Kubernetes manifests (Deployment, Service, ConfigMap, etc.
+Helm Chart: It helps to deploy the complex applications easily and containing all Kubernetes manifests Deployment, Service, ConfigMap, etc.
