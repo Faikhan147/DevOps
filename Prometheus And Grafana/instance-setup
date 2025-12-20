@@ -46,4 +46,4 @@ rate(node_network_receive_bytes_total[1m]) -> Run queries
 
 Step 5. Select The Visualization
 
-Top Right Visualization -> Suggestion -> Select The Guage
+Top Right Visualization -> Suggestions -> Select The Guage
