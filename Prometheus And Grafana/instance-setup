@@ -1,0 +1,49 @@
+Step 1. Update The EC2-Public-IP In Prometheus YAML Then Restart The Container
+
+nano /opt/prometheus/prometheus.yml
+docker restart Prometheus
+
+
+
+Step 2. Add the Prometheus Data Source in Grafana 
+
+Login Grafana Console -> Default username and password is admin -> Set new password -> Connections -> Data sources -> Add data source -> Select The Prometheus -> 
+Scroll Down Connection -> Prometheus server URL *(http://EC2-Public-IP:9090/) -> Scroll Down Save & test 
+
+
+
+Step 3. Create The Dashboard in Grafana
+
+Dashboards -> Create dashboard -> Add visualization -> Select data source(Select The prometheus-1) -> Click On Code -> Do The Step 4 in Metrics browser
+
+
+
+Step 4. Run the Metrics in Grafana
+
+
+
+Check The CPU Usage
+
+Metrics browser
+100 - (avg(rate(node_cpu_seconds_total{mode="idle"}[1m])) * 100) -> Run queries -> Add query
+
+Check The Memory
+
+Metrics browser
+node_memory_MemAvailable_bytes -> Run queries -> Add query
+
+Check The Network Transmits
+
+Metrics browser
+rate(node_network_transmit_bytes_total[1m]) -> Run queries -> Add query
+
+Check The Network Receives
+
+Metrics browser
+rate(node_network_receive_bytes_total[1m]) -> Run queries
+
+
+
+Step 5. Select The Visualization
+
+Top Right Visualization -> Suggestion -> Select The Guage
