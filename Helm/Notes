@@ -1,0 +1,8 @@
+What is Helm ?
+
+It is a package manager for Kubernetes where we can manage, upgrade, rollback and install/uninstall the applications
+
+
+Components:-
+
+Helm Chart: It helps to deploy the complex applications easily and containing all Kubernetes manifests (Deployment, Service, ConfigMap, etc.
