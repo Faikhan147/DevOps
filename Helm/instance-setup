@@ -11,9 +11,10 @@ kubectl get nodes
 
 
 
-Step 3. Apply The Helm Chart
+Step 3. Apply The Helm Chart And List
 
 helm install deployment .
+helm list
 
 
 
