@@ -15,7 +15,7 @@ Scroll Down Connection -> Prometheus server URL *(http://EC2-Public-IP:9090/) ->
 
 Step 3. Create The Dashboard in Grafana
 
-Dashboards -> Create dashboard -> Add visualization -> Select data source(Select The prometheus-1) -> Click On Code -> Do The Step 4 in Metrics browser
+Dashboards -> Create dashboard -> Add visualization -> Select data source(Select The prometheus) -> Click On Code -> Do The Step 4 in Metrics browser
 
 
 
