@@ -1,0 +1,42 @@
+#!/bin/bash
+sudo su
+apt update -y
+apt install -y docker.io apache2 unzip wget
+systemctl start docker
+systemctl enable docker
+systemctl start apache2
+systemctl enable apache2
+
+# Download the zip directly (public Google Drive link)
+wget --no-check-certificate "https://drive.google.com/uc?export=download&id=1H9RaSCEx1pvBupx2qcDvcN1E7YLdcl2B" -O neogym.zip
+
+# Unzip the file
+unzip -o neogym.zip
+
+# Copy files to Apache web directory
+cp -r neogym-html/* /var/www/html/
+
+# Setup Prometheus directory & YAML
+mkdir -p /opt/prometheus
+cat <<EOF > /opt/prometheus/prometheus.yml
+global:
+  scrape_interval: 15s
+
+scrape_configs:
+  - job_name: ec2-node
+    static_configs:
+      - targets:
+          - "EC2-Public-IP:9100"
+EOF
+
+# Run Node Exporter Container
+docker run -d --name node-exporter -p 9100:9100 --restart unless-stopped prom/node-exporter
+
+# Run Prometheus Container
+docker run -d --name Prometheus -p 9090:9090 -v /opt/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml --restart unless-stopped prom/prometheus
+
+# Run Grafana Container
+docker run -d --name Grafana -p 3000:3000 --restart unless-stopped grafana/grafana
+
+# Restart Apache
+systemctl restart apache2
