@@ -1,8 +1,8 @@
-Step 1. Update The EC2-Public-IP In Prometheus YAML Then Restart The Container
+Step 1. Update The EC2-Public-IP In Prometheus YAML Then Restart The Container And Check ALl Container Status
 
 nano /opt/prometheus/prometheus.yml
 docker restart Prometheus
-
+docker container ps
 
 
 Step 2. Add the Prometheus Data Source in Grafana 
