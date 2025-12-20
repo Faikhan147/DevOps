@@ -17,7 +17,7 @@ kubectl version --client
 curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
 
 #Create The Directory
-mkdir /root/helm/templates
+mkdir -p /root/helm/templates
 
 # Create the Values YAML
 cat <<EOF > /root/helm/values.yaml
