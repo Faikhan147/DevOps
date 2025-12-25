@@ -30,4 +30,4 @@ terraform plan
 
 Step 6. Plan The Terraform File
 
-terraform apply
+terraform apply -auto-approve
