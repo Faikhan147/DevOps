@@ -19,10 +19,10 @@ Dashboards -> Create dashboard -> Add visualization -> Select data source(Select
 
 Step 4.  Check The Application Access Logs
 
-Label filters -> Select label(Select The filename) -> Select value(Select The /var/log/apache2/access.log)
+Label filters -> Select label(Select The filename) -> Select value(Select The /var/log/apache2/access.log) -> Run query
 
 
 
 Step 5.  Check The Application Error Logs
 
-Label filters -> Select label(Select The filename) -> Select value(Select The /var/log/apache2/error.log)
+Label filters -> Select label(Select The filename) -> Select value(Select The /var/log/apache2/error.log) -> Run query
