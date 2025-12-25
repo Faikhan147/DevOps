@@ -13,16 +13,16 @@ Scroll Down Connection -> URL *(http://EC2-Public-IP:3100/) -> Scroll Down Save 
 
 Step 3. Create The Dashboard in Grafana
 
-Dashboards -> Create dashboard -> Add visualization -> Select data source(Select The loki) -> Click On Code
+Dashboards -> Create dashboard -> Add visualization -> Select data source(Select The loki)
 
 
 
 Step 4.  Check The Application Access Logs
 
-Metrics browser -> Select Job(Select The apache) -> filename(Select The /var/log/access.log)
+Label filters -> Select label(Select The filename) -> Select value(Select The /var/log/apache2/access.log)
 
 
 
 Step 5.  Check The Application Error Logs
 
-Metrics browser -> Select Job(Select The apache) -> filename(Select The /var/log/error.log)
+Label filters -> Select label(Select The filename) -> Select value(Select The /var/log/apache2/error.log)
