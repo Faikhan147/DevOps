@@ -1,0 +1,33 @@
+Step 1. AWS Credentials
+
+aws configure
+
+
+
+Step 2. Initialize The Terraform
+
+terraform init
+
+
+
+Step 3. Validate The Terraform File
+
+terraform validate
+
+
+
+Step 4. Format The Terraform File
+
+terraform fmt -recursive
+
+
+
+Step 5. Plan The Terraform File
+
+terraform plan
+
+
+
+Step 6. Plan The Terraform File
+
+terraform apply
