@@ -1,0 +1,25 @@
+terraform init -> To initialize the terraform
+
+terraform validate -> To validate the terraform files
+
+terraform fmt -> To make the terraform files in readable format
+
+terraform plan -> To plan the terraform files
+
+terraform apply -> To apply the terraform files
+
+terraform apply -auto-approve -> To automatically apply the plan of terraform files
+
+terraform destroy -> To destroy the terraform infrastructure
+
+terraform show -> To show current terraform state detailed
+
+terraform output -> To check the terraform outputs like IPs or URLs
+
+terraform state list -> To list the terraform state files
+
+terraform workspace list -> To list the terraform workspaces
+
+terraform workspace new workspace-name -> To create the terraform workspace
+
+terraform workspace select workspace-name -> To select the terraform workspace
