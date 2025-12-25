@@ -26,20 +26,6 @@ dpkg -i /root/splunkforwarder.deb
 #Add Splunk User
 useradd -r splunk || true
 
-#Download Splunk Credentials File directly (public Google Drive link)
-wget --no-check-certificate "https://drive.google.com/uc?export=download&id=1AU-voVOQrwV1-Zj7Xo7xZnNjvCd1C5f8" -O /root/splunkclouduf.spl
-
-#Start Splunk Forwarder
-/opt/splunkforwarder/bin/splunk start --accept-license --answer-yes --seed-passwd 'Faisalkhan35@'
-
-# Wait for splunkd to be fully up
-sleep 15
-
-#Set Apache Logs Permissions
-setfacl -m u:splunk:r /var/log/apache2/access.log
-setfacl -m u:splunk:r /var/log/apache2/error.log
-setfacl -m u:splunk:rx /var/log/apache2
-
 # Setup Splunk directory & Config
 mkdir -p /opt/splunkforwarder/etc/system/local
 cat <<EOF > /opt/splunkforwarder/etc/system/local/inputs.conf
@@ -53,6 +39,20 @@ index = apache
 sourcetype = apache:error
 disabled = false
 EOF
+
+#Set Apache Logs Permissions
+setfacl -m u:splunk:r /var/log/apache2/access.log
+setfacl -m u:splunk:r /var/log/apache2/error.log
+setfacl -m u:splunk:rx /var/log/apache2
+
+#Download Splunk Credentials File directly (public Google Drive link)
+wget --no-check-certificate "https://drive.google.com/uc?export=download&id=1AU-voVOQrwV1-Zj7Xo7xZnNjvCd1C5f8" -O /root/splunkclouduf.spl
+
+#Start Splunk Forwarder
+/opt/splunkforwarder/bin/splunk start --accept-license --answer-yes --seed-passwd 'Faisalkhan35@'
+
+# Wait for splunkd to be fully up
+sleep 15
 
 #Install The Credentials
 /opt/splunkforwarder/bin/splunk install app /root/splunkclouduf.spl -auth admin:Faisalkhan35@
