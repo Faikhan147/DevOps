@@ -1,0 +1,15 @@
+Step 1. Login In Splunk
+
+Go To URL https://prd-p-dfpdu.splunkcloud.com -> Username(sc_admin) -> Password(Faisalkhan35@) -> Click On Sign In
+
+
+
+Step 2. Check The Application Access Logs
+
+Click On Search & Reporting -> Search(index=apache sourcetype=apache:access earliest=-1m)
+
+
+
+Step 3. Check The Application Error Logs
+
+Search(index=apache sourcetype=apache:error)
