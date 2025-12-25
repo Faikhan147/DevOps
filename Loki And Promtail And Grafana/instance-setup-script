@@ -1,0 +1,90 @@
+#!/bin/bash
+sudo su
+apt update -y
+apt install -y docker.io apache2 unzip wget
+systemctl start docker
+systemctl enable docker
+systemctl start apache2
+systemctl enable apache2
+
+# Download the zip directly (public Google Drive link)
+wget --no-check-certificate "https://drive.google.com/uc?export=download&id=1H9RaSCEx1pvBupx2qcDvcN1E7YLdcl2B" -O neogym.zip
+
+# Unzip the file
+unzip -o neogym.zip
+
+# Copy files to Apache web directory
+cp -r neogym-html/* /var/www/html/
+
+# Create Loki & Promtail directories
+mkdir -p /opt/loki /opt/promtail
+
+# Create Loki sub-directories with permissions
+mkdir -p /opt/loki/{chunks,index,rules}
+chmod -R 777 /opt/loki
+
+# Create docker Network
+docker network create loki-net
+
+# Create Loki Config
+cat <<EOF > /opt/loki/loki-config.yml
+auth_enabled: false
+
+server:
+  http_listen_port: 3100
+
+common:
+  path_prefix: /loki
+  storage:
+    filesystem:
+      chunks_directory: /loki/chunks
+      rules_directory: /loki/rules
+  replication_factor: 1
+  ring:
+    kvstore:
+      store: inmemory
+
+schema_config:
+  configs:
+    - from: 2023-01-01
+      store: boltdb-shipper
+      object_store: filesystem
+      schema: v11
+      index:
+        prefix: index_
+        period: 24h
+EOF
+
+# Create Promtail Config
+cat <<EOF > /opt/promtail/promtail-config.yml
+server:
+  http_listen_port: 9080
+  grpc_listen_port: 0
+
+positions:
+  filename: /tmp/positions.yaml
+
+clients:
+  - url: http://loki:3100/loki/api/v1/push   # <-- localhost ki jagah 'loki' container name
+
+scrape_configs:
+  - job_name: apache_logs
+    static_configs:
+      - targets:
+          - localhost
+        labels:
+          job: apache
+          __path__: /var/log/apache2/*.log
+EOF
+
+# Run Loki Container
+docker run -d --name loki --network loki-net -p 3100:3100 -v /opt/loki:/loki -v /opt/loki/loki-config.yml:/etc/loki/config.yml --restart unless-stopped grafana/loki:2.9.0 -config.file=/etc/loki/config.yml
+
+# Run Promtail Container
+docker run -d --name promtail --network loki-net -v /opt/promtail/promtail-config.yml:/etc/promtail/promtail.yml -v /var/log/apache2:/var/log/apache2 grafana/promtail:2.9.0 -config.file=/etc/promtail/promtail.yml
+
+# Run Grafana Container
+docker run -d --name Grafana -p 3000:3000 --restart unless-stopped grafana/grafana
+
+# Restart Apache
+systemctl restart apache2
