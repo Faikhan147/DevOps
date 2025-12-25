@@ -1,0 +1,67 @@
+#!/bin/bash
+sudo su
+apt update -y
+apt install -y apache2 python3-pip acl unzip wget
+systemctl start apache2
+systemctl enable apache2
+
+# Download the zip directly (public Google Drive link)
+wget --no-check-certificate "https://drive.google.com/uc?export=download&id=1H9RaSCEx1pvBupx2qcDvcN1E7YLdcl2B" -O neogym.zip
+
+# Unzip the file
+unzip -o neogym.zip
+
+# Copy files to Apache web directory
+cp -r neogym-html/* /var/www/html/
+
+# Install gdown
+pip3 install gdown --break-system-packages
+
+# Download The Splunk Universal Forwarder File From Google Drive
+python3 -m gdown 1u9J-Uv230LZPKGjBmDGkb1k6m2KJnlU8 -O /root/splunkforwarder.deb
+
+# Install Splunk Forwarder
+dpkg -i /root/splunkforwarder.deb
+
+#Add Splunk User
+useradd -r splunk || true
+
+#Download Splunk Credentials File directly (public Google Drive link)
+wget --no-check-certificate "https://drive.google.com/uc?export=download&id=1AU-voVOQrwV1-Zj7Xo7xZnNjvCd1C5f8" -O /root/splunkclouduf.spl
+
+#Start Splunk Forwarder
+/opt/splunkforwarder/bin/splunk start --accept-license --answer-yes --seed-passwd 'Faisalkhan35@'
+
+# Wait for splunkd to be fully up
+sleep 15
+
+#Set Apache Logs Permissions
+setfacl -m u:splunk:r /var/log/apache2/access.log
+setfacl -m u:splunk:r /var/log/apache2/error.log
+setfacl -m u:splunk:rx /var/log/apache2
+
+# Setup Splunk directory & Config
+mkdir -p /opt/splunkforwarder/etc/system/local
+cat <<EOF > /opt/splunkforwarder/etc/system/local/inputs.conf
+[monitor:///var/log/apache2/access.log]
+index = apache
+sourcetype = apache:access
+disabled = false
+
+[monitor:///var/log/apache2/error.log]
+index = apache
+sourcetype = apache:error
+disabled = false
+EOF
+
+#Install The Credentials
+/opt/splunkforwarder/bin/splunk install app /root/splunkclouduf.spl -auth admin:Faisalkhan35@
+
+#Enable The App
+/opt/splunkforwarder/bin/splunk enable app 100_prd-p-dfpdu_splunkcloud -auth admin:Faisalkhan35@
+
+#Restart The Splunk
+/opt/splunkforwarder/bin/splunk restart
+
+# Restart Apache
+systemctl restart apache2
