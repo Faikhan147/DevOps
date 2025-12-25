@@ -7,7 +7,7 @@ docker container ps
 Step 2. Add the Prometheus Data Source in Grafana 
 
 Login Grafana Console -> Default username and password is admin -> Set new password -> Connections -> Data sources -> Add data source -> Select The Loki -> 
-Scroll Down Connection -> Prometheus server URL *(http://EC2-Public-IP:3100/) -> Scroll Down Save & test 
+Scroll Down Connection -> URL *(http://EC2-Public-IP:3100/) -> Scroll Down Save & test 
 
 
 
