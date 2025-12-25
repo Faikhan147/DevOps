@@ -1,0 +1,39 @@
+Step 1. Go To Datadog And Create The Account
+
+Go To Datadog https://ap1.datadoghq.com/ -> Click On Try for free -> Select a Region(🇯🇵 Japan (AP1) -> Business Email -> Full Name -> Company -> Password -> 
+Sign Up -> Copy And Paste The 8-Digit Datadog Verification Code From Gmail In Spam -> Next -> Now Run The URL https://ap1.datadoghq.com/ 
+
+
+
+Step 2. Copy The Datadog API Key
+
+Datadog Console -> Ctrl + K -> Search API Keys -> Click On API Keys -> Copy The API Key
+
+
+
+Step 3. Install The Datadog agent
+
+DD_API_KEY=YOUR_DATADOG_API_KEY \
+DD_SITE="ap1.datadoghq.com" \
+DD_AGENT_MAJOR_VERSION=7 \
+bash -c "$(curl -L https://s3.amazonaws.com/dd-agent/scripts/install_script.sh)"
+
+
+
+Step 4.  Enable The Logs in File datadog.yaml
+
+grep -q "^logs_enabled" /etc/datadog-agent/datadog.yaml && \
+sed -i 's/^#\?\s*logs_enabled:.*/logs_enabled: true/' /etc/datadog-agent/datadog.yaml || \
+echo "logs_enabled: true" >> /etc/datadog-agent/datadog.yaml
+
+
+
+Step 5. Restart Of The Datadog Agent
+
+systemctl restart datadog-agent
+
+
+
+Step 6. Check The Status Of The Datadog Agent
+
+systemctl status datadog-agent
