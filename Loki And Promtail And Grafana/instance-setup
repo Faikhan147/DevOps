@@ -1,3 +1,28 @@
 Step 1. Check The Containers
 
 docker container ps
+
+
+
+Step 2. Add the Prometheus Data Source in Grafana 
+
+Login Grafana Console -> Default username and password is admin -> Set new password -> Connections -> Data sources -> Add data source -> Select The Loki -> 
+Scroll Down Connection -> Prometheus server URL *(http://EC2-Public-IP:3100/) -> Scroll Down Save & test 
+
+
+
+Step 3. Create The Dashboard in Grafana
+
+Dashboards -> Create dashboard -> Add visualization -> Select data source(Select The loki) -> Click On Code
+
+
+
+Step 4.  Check The Application Access Logs
+
+Metrics browser -> Select Job(Select The apache) -> filename(Select The /var/log/access.log)
+
+
+
+Step 5.  Check The Application Error Logs
+
+Metrics browser -> Select Job(Select The apache) -> filename(Select The /var/log/error.log)
