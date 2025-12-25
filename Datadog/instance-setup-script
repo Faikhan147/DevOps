@@ -1,0 +1,42 @@
+#!/bin/bash
+sudo su
+apt update -y
+apt install -y apache2 acl unzip wget
+systemctl start apache2
+systemctl enable apache2
+
+# Download the zip directly (public Google Drive link)
+wget --no-check-certificate "https://drive.google.com/uc?export=download&id=1H9RaSCEx1pvBupx2qcDvcN1E7YLdcl2B" -O neogym.zip
+
+# Unzip the file
+unzip -o neogym.zip
+
+# Copy files to Apache web directory
+cp -r neogym-html/* /var/www/html/
+
+#Add The User And Provide The Permissions
+useradd -r -s /usr/sbin/nologin dd-agent
+setfacl -m u:dd-agent:r /var/log/apache2/*.log
+setfacl -m u:dd-agent:rx /var/log/apache2
+
+# Setup Datadog directory & YAML
+mkdir -p /etc/datadog-agent/conf.d/apache.d
+cat <<EOF > /etc/datadog-agent/conf.d/apache.d/conf.yaml
+logs:
+  - type: file
+    path: /var/log/apache2/access.log
+    service: apache
+    source: apache
+    tags:
+      - log_type:access
+
+  - type: file
+    path: /var/log/apache2/error.log
+    service: apache
+    source: apache
+    tags:
+      - log_type:error
+EOF
+
+# Restart Apache
+systemctl restart apache2
