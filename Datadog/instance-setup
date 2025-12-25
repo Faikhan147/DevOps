@@ -37,3 +37,10 @@ systemctl restart datadog-agent
 Step 6. Check The Status Of The Datadog Agent
 
 systemctl status datadog-agent
+
+
+
+Step 7. Check The Application Logs
+
+Click On Below Left Logs
+
