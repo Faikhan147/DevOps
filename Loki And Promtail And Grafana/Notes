@@ -1,0 +1,13 @@
+What is Loki ?
+
+It is a logging tool which is used to store the logs 
+
+
+What is Promtail ?
+
+It is a logging tool which is used to collect the logs and send to loki
+
+
+What is Grafana ?
+
+It is a monitoring tool which we use to visualize the system metrics such as CPU Usage, Memory and Networks etc by creating the dashboards
