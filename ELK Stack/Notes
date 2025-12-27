@@ -1,0 +1,10 @@
+What is ELK Stack ?
+
+It is a logging tool which helps to collect, filter and visualize the logs in dashboards
+
+
+Components:-
+
+Elasticsearch: It stores the logs
+Logstash: It filters and collects the logs and sends to elasticsearch
+Kibana: It visualizes the logs
