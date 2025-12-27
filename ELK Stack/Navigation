@@ -1,0 +1,9 @@
+Step 1. Run The Script
+
+Launch The EC2 instance with Instance type t2.large by using the instance-setup-script
+
+
+
+Step 2. Instance Setup
+
+Instance Setup Using instance-setup
