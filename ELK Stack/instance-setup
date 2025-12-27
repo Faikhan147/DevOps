@@ -1,0 +1,29 @@
+Step 1. Check The Containers
+
+docker container ps
+
+
+
+Step 2. Create The Access log Data view
+
+Go To Kibana Console -> Search On search bar Data Views -> Click On Kibana / Data Views -> Create data view -> 
+Your index pattern can match 2 sources(Copy And Paste The access source On Index pattern) -> Name -> name -> Save data view to Kibana
+
+
+
+Step 3. Create The Error log Data view
+
+Search On search bar Data Views -> Click On Kibana / Data Views -> Create data view -> 
+Your index pattern can match 2 sources(Copy And Paste The error source On Index pattern) -> Name -> name -> Save data view to Kibana
+
+
+
+Step 4. Visualize The Access logs 
+
+Search On search bar Discover -> Click On Discover -> Top Left Select The access logs source
+
+
+
+Step 5. Visualize The Error logs
+
+Search On search bar Discover -> Click On Discover -> Top Left Select The error logs source
