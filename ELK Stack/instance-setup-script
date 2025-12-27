@@ -1,0 +1,74 @@
+#!/bin/bash
+sudo su
+apt update -y
+apt install -y docker.io apache2 unzip wget
+systemctl start docker
+systemctl enable docker
+systemctl start apache2
+systemctl enable apache2
+
+# Download the zip directly (public Google Drive link)
+wget --no-check-certificate "https://drive.google.com/uc?export=download&id=1H9RaSCEx1pvBupx2qcDvcN1E7YLdcl2B" -O neogym.zip
+
+# Unzip the file
+unzip -o neogym.zip
+
+# Copy files to Apache web directory
+cp -r neogym-html/* /var/www/html/
+
+# Restart Apache
+systemctl restart apache2
+
+# Fix Apache log permissions for Logstash
+chmod -R 755 /var/log/apache2
+
+# Create Logstash config directory and config file
+mkdir -p /root/logstash
+cat <<EOF > /root/logstash/apache.conf
+input {
+  file {
+    path => "/var/log/apache2/access.log"
+    start_position => "beginning"
+    sincedb_path => "/dev/null"
+    type => "apache_access"
+  }
+
+  file {
+    path => "/var/log/apache2/error.log"
+    start_position => "beginning"
+    sincedb_path => "/dev/null"
+    type => "apache_error"
+  }
+}
+
+filter {
+  if [type] == "apache_access" {
+    grok {
+      match => { "message" => "%{COMBINEDAPACHELOG}" }
+    }
+  }
+}
+
+output {
+  elasticsearch {
+    hosts => ["http://elasticsearch:9200"]
+    index => "apache-%{type}-%{+YYYY.MM.dd}"
+  }
+  stdout { codec => rubydebug }
+}
+EOF
+
+# Run Elasticsearch container
+docker run -d --name elasticsearch -p 9200:9200 -e "discovery.type=single-node" -e "xpack.security.enabled=false" docker.elastic.co/elasticsearch/elasticsearch:8.11.3
+
+# Wait for Elasticsearch to be ready
+sleep 25
+
+# Run Kibana container
+docker run -d --name kibana -p 5601:5601 -e ELASTICSEARCH_HOSTS=http://elasticsearch:9200 --link elasticsearch docker.elastic.co/kibana/kibana:8.11.3
+
+# Wait for Kibana to initialize
+sleep 15
+
+# Run Logstash container
+docker run -d --name logstash -v /root/logstash/apache.conf:/usr/share/logstash/pipeline/apache.conf -v /var/log/apache2:/var/log/apache2:ro --link elasticsearch docker.elastic.co/logstash/logstash:8.11.3
