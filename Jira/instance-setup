@@ -47,11 +47,10 @@ Click On Issues -> Scroll Down Comment(Add The Comment Working In Progress) -> A
 Step 8. Check The Database And Use
 
 docker exec -it mysql-jira bash
-
 mysql -u Faisal -p
 password: Faisalkhan35@
-
 SHOW DATABASES;
+USE faisal_db;
 
 
 
