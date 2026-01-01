@@ -34,13 +34,13 @@ Create new project -> Select The Task management -> Next -> Select -> Name -> Na
 
 Step 6. Create The Ticket
 
-Click On Issues -> Click On Top Bar Create -> Summary -> Due Date (d/MMM/yy) -> Description -> Assignee -> Priority(Highest) -> Labels -> Create 
+Click On Top Bar Create -> Summary -> Due Date (d/MMM/yy) -> Description -> Assignee -> Priority(Highest) -> Labels -> Create 
 
 
 
 Step 7. Tracking, Add Comments and Update The Status Of The Ticket
 
-Scroll Down Comment(Add The Comment Working In Progress) -> Add -> Comment(Add The Comment EC2 Server is Working and Stable) -> Add -> Click On Top Bar To Do Click On Done
+Click On Issues -> Scroll Down Comment(Add The Comment Working In Progress) -> Add -> Comment(Add The Comment EC2 Server is Working and Stable) -> Add -> Click On Top Bar To Do Click On Done
 
 
 
