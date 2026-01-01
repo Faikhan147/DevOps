@@ -22,7 +22,7 @@ Go To Jira UI -> Select The I'll set it up myself -> Next -> Select The My Own D
 Hostname(mysql-jira) -> Database(jira_db) -> Username(Faisal) -> Password(Faisalkhan35@) -> Test Connection -> Next -> Next -> 
 Click On generate a Jira trial license -> Organization(Faisal-Technologies) -> Generate License -> Confirm -> Send anyway -> Next -> Full name -> Name -> 
 Email Address -> Username -> Name -> Password -> Confirm Password -> Next -> Configure Email Notifications(Select The Now) -> Host Name(smtp.gmail.com) -> 
-SMTP Port(587) -> Select The TLS. -> Username(Email ID) -> Password(Copy And Paste The App Password) -> Finish -> Continue -> Next
+SMTP Port(587) -> Enable The TLS. -> Username(Email ID) -> Password(Copy And Paste The App Password) -> Finish -> Continue -> Next
 
 
 
