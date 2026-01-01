@@ -1,0 +1,24 @@
+#!/bin/bash
+sudo su
+apt update -y
+apt install -y docker.io python3-pip unzip wget
+systemctl start docker
+systemctl enable docker
+
+# Install gdown
+pip3 install gdown --break-system-packages
+
+# Download project zip from Google Drive
+python3 -m gdown --id 1wkwupW7Ea7qIUANkNqycUuAcLChXvAsO -O /root/mysql-connector-j-9.5.0.zip
+
+# Unzip the project
+unzip -o /root/mysql-connector-j-9.5.0.zip -d /root/
+
+#Create Docker Network
+docker network create jira-net
+
+# Run MYSQL container
+docker run -d --name mysql-jira --network jira-net -e MYSQL_ROOT_PASSWORD=root123 -e MYSQL_DATABASE=jira_db -e MYSQL_USER=Faisal -e MYSQL_PASSWORD=Faisalkhan35@ mysql:8.0
+
+# Run Jira container
+docker run -d --name jira --network jira-net -p 8080:8080 -v /root/mysql-connector-j-9.5.0/mysql-connector-j-9.5.0.jar:/opt/atlassian/jira/lib/mysql-connector-j-9.5.0.jar atlassian/jira-software:9.12.19-jdk11
