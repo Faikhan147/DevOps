@@ -20,5 +20,8 @@ docker network create jira-net
 # Run MYSQL container
 docker run -d --name mysql-jira --network jira-net -e MYSQL_ROOT_PASSWORD=root123 -e MYSQL_DATABASE=jira_db -e MYSQL_USER=Faisal -e MYSQL_PASSWORD=Faisalkhan35@ mysql:8.0
 
+# Wait for MySQL to initialize
+sleep 60
+
 # Run Jira container
 docker run -d --name jira --network jira-net -p 8080:8080 -v /root/mysql-connector-j-9.5.0/mysql-connector-j-9.5.0.jar:/opt/atlassian/jira/lib/mysql-connector-j-9.5.0.jar atlassian/jira-software:9.12.19-jdk11
