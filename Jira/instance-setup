@@ -1,0 +1,60 @@
+Step 1. Create An Atlassian Account 
+
+Go To https://id.atlassian.com/signup -> Email -> Sign up -> Enter a 6-Dgit Verification code -> Full name -> Name -> Password -> Continue
+
+
+
+Step 2. Generate The App Password
+
+Go To https://myaccount.google.com/apppasswords -> App name(Jira) -> Create -> Copy And Paste The 16-Digit password And Remove The Spaces -> Done
+
+
+
+Step 3. Jira Setup
+
+Select The I'll set it up myself -> Next -> Select The My Own Database (recommended for production environments) -> Database Type(MySQL 8.0) -> 
+Hostname(mysql-jira) -> Database(jira_db) -> Username(Faisal) -> Password(Faisalkhan35@) -> Test Connection -> Next -> Next -> 
+Click On generate a Jira trial license -> Organization(Faisal-Technologies) -> Generate License -> Confirm -> Send anyway -> Next -> Full name -> Name -> 
+Email Address -> Username -> Name -> Password -> Confirm Password -> Next -> Configure Email Notifications(Select The Now) -> Host Name(smtp.gmail.com) -> 
+SMTP Port(587) -> Select The TLS. -> Username(Email ID) -> Password(Copy And Paste The App Password) -> Finish -> Continue -> Next
+
+
+
+Step 4. Create The Project
+
+Create new project -> Select The Task management -> Next -> Select -> Name -> Name -> Submit
+
+
+
+Step 5. Create The Ticket
+
+Click On Top Bar Create -> Summary -> Due Date (d/MMM/yy) -> Description -> Assignee -> Priority(Highest) -> Labels -> Create 
+
+
+
+Step 6. Tracking, Add Comments and Update The Status Of The Ticket
+
+Scroll Down Comment(Add The Comment Working In Progress) -> Add -> Comment(Add The Comment EC2 Server is Working and Stable) -> Add -> Click On Top Bar To Do Click On Done
+
+
+
+Step 7. Check The Database And Use
+
+docker exec -it mysql-jira bash
+
+mysql -u Faisal -p
+password: Faisalkhan35@
+
+SHOW DATABASES;
+
+
+
+Step 8. Check The Status Of The Issues From The Database
+
+SELECT id, issuenum, summary FROM jiraissue LIMIT 5;
+
+
+
+Step 9. Check The Status Of The Comments From The Database
+
+SELECT id, issueid, author, actiontype, actionbody, created FROM jiraaction WHERE issueid = 10000;
