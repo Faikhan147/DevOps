@@ -44,8 +44,9 @@ Click On Issues -> Scroll Down Comment(Add The Comment Working In Progress) -> A
 
 
 
-Step 8. Check The Database And Use
+Step 8. Check The Containers Status, Database And Use
 
+docker container ps
 docker exec -it mysql-jira bash
 mysql -u Faisal -p
 password: Faisalkhan35@
