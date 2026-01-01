@@ -50,7 +50,7 @@ docker exec -it mysql-jira bash
 mysql -u Faisal -p
 password: Faisalkhan35@
 SHOW DATABASES;
-USE faisal_db;
+USE jira_db;
 
 
 
