@@ -4,6 +4,12 @@ https://github.com/Faikhan147/GitHub-Actions/actions/workflows/ec2.yaml
 
 
 
-Step 2. Run The Job
+Step 2. SignIn The GitHub Account
+
+Click On Top Right Sign in -> Username or email address(faisalkhanattari35@gmail.com -> Password(Faisalkhan35@) -> Sign in
+
+
+
+Step 3. Run The Job
 
 Run workflow -> Run workflow
