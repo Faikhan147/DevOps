@@ -1,0 +1,38 @@
+name: Launch EC2
+
+on:
+  workflow_dispatch   # Manual run only
+
+jobs:
+  ec2-launch:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Configure AWS 
+      run: |
+        aws configure set aws_access_key_id AKIAYQNJSPFO6RH72YD7
+        aws configure set aws_secret_access_key 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
+
+        aws configure set default.region ap-south-1
+
+    - name: Launch EC2 and Deploy Website
+      run: |
+        aws ec2 run-instances \
+          --image-id ami-02b8269d5e85954ef \
+          --instance-type t2.micro \
+          --key-name faisal \
+          --security-group-ids sg-06becf8eeaf3e7dd9 \
+          --subnet-id subnet-042c03481f1557a8f \
+          --user-data '#!/bin/bash
+          sudo su
+          apt update -y
+          apt install -y apache2 unzip wget
+          systemctl start apache2
+          systemctl enable apache2
+
+          wget --no-check-certificate "https://drive.google.com/uc?export=download&id=1H9RaSCEx1pvBupx2qcDvcN1E7YLdcl2B" -O neogym.zip
+          unzip -o neogym.zip
+          cp -r neogym-html/* /var/www/html/
+          systemctl restart apache2
+          ' \
+          --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=website}]"
