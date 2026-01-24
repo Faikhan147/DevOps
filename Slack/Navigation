@@ -2,7 +2,7 @@ Step 1. Generate The Webhook URL
 
 Open the link in browser https://api.slack.com/apps -> sign in to your Slack account -> Enter your email to sign in(faisalkhanattari35@gmail.com) -> 
 Sign In With Email -> Enter The 6-Digit Code From The Gmail -> Click On use Slack in your browser -> Again Open the link in browser https://api.slack.com/apps -> 
-Your Apps(Select The App) -> Incoming Webhooks -> Add New Webhook -> Channel for webhook(Select The Channel) -> Allow
+Your Apps(Select The App) -> Incoming Webhooks -> Add New Webhook -> Channel for webhook(Select The Channel devops) -> Allow
 
 
 
