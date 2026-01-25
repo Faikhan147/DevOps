@@ -13,7 +13,7 @@ Datadog Console -> Hower On Below Left Email ID -> Click On API Keys -> Copy The
 
 Step 3. Install The Datadog agent
 
-DD_API_KEY=YOUR_DATADOG_API_KEY \
+DD_API_KEY=YOUR-DATADOG-API-KEY \
 DD_SITE="ap1.datadoghq.com" \
 DD_AGENT_MAJOR_VERSION=7 \
 bash -c "$(curl -L https://s3.amazonaws.com/dd-agent/scripts/install_script.sh)"
