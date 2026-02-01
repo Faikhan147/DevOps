@@ -1,4 +1,4 @@
-git init → To create the new git repository.
+git init → To initialoze the new git repository.
 
 git clone <repo_url> → To copy the existing git repository on local machine.
 
