@@ -1,6 +1,6 @@
 What is Helm ?
 
-It is a package manager for Kubernetes where we can manage, upgrade, rollback and install/uninstall the applications
+It a packages of YAML templates used to deploy he application in Kubernetes through versioned, repeatable and configurable deployments. 
 
 
 Components:-
